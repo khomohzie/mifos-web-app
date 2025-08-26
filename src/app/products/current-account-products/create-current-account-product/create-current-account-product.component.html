@@ -1,22 +1,250 @@
-<div class="container">
-  <form [formGroup]="currentAccountProductForm" (ngSubmit)="submit()">
-    <div class="layout-row gap-20px responsive-column">
-      <mat-form-field class="flex-33">
-        <mat-label>{{ 'labels.inputs.Name' | translate }}</mat-label>
-        <input matInput formControlName="name" />
-      </mat-form-field>
-      <mat-form-field class="flex-33">
-        <mat-label>{{ 'labels.inputs.Short Name' | translate }}</mat-label>
-        <input matInput formControlName="shortName" />
-      </mat-form-field>
-    </div>
-    <div class="layout-row align-end gap-2px responsive-column m-t-20">
-      <button mat-raised-button color="primary" type="submit" [disabled]="currentAccountProductForm.invalid">
-        {{ 'labels.buttons.Create' | translate }}
-      </button>
-      <button mat-raised-button color="warn" [routerLink]="['../']">
-        {{ 'labels.buttons.Cancel' | translate }}
-      </button>
-    </div>
-  </form>
+<div class="container m-t-20">
+  <h3 class="mat-h3">{{ 'Create Current Account Product' | translate }}</h3>
+
+  <mat-stepper orientation="horizontal" [linear]="true">
+    <!-- Details Step -->
+    <mat-step [stepControl]="currentAccountProductDetailsForm" [optional]="false">
+      <form [formGroup]="currentAccountProductDetailsForm">
+        <ng-template matStepLabel>{{ 'Details' | translate }}</ng-template>
+
+        <div class="layout-row gap-20px responsive-column">
+          <mat-form-field class="flex-48">
+            <mat-label>{{ 'labels.inputs.Name' | translate }}</mat-label>
+            <input matInput formControlName="name" />
+          </mat-form-field>
+
+          <mat-form-field class="flex-48">
+            <mat-label>{{ 'labels.inputs.Short Name' | translate }}</mat-label>
+            <input matInput formControlName="shortName" />
+          </mat-form-field>
+        </div>
+
+        <div class="layout-row gap-20px responsive-column">
+          <mat-form-field class="flex-98">
+            <mat-label>{{ 'labels.inputs.Description' | translate }}</mat-label>
+            <input matInput formControlName="description" />
+          </mat-form-field>
+        </div>
+
+        <div class="form-actions m-t-20">
+          <button mat-raised-button color="primary" matStepperNext [disabled]="!currentAccountProductDetailsForm.valid">
+            {{ 'labels.buttons.Next' | translate }}
+          </button>
+        </div>
+      </form>
+    </mat-step>
+
+    <!-- Currency Step -->
+    <mat-step [stepControl]="currentAccountProductCurrencyForm" [optional]="false">
+      <form [formGroup]="currentAccountProductCurrencyForm">
+        <ng-template matStepLabel>{{ 'Currency' | translate }}</ng-template>
+
+        <div class="layout-row gap-20px responsive-column">
+          <mat-form-field class="flex-33">
+            <mat-label>{{ 'Currency Code' | translate }}</mat-label>
+            <input matInput formControlName="currencyCode" />
+          </mat-form-field>
+
+          <mat-form-field class="flex-33">
+            <mat-label>{{ 'Digits After Decimal' | translate }}</mat-label>
+            <input matInput type="number" formControlName="currencyDigits" />
+          </mat-form-field>
+
+          <mat-form-field class="flex-33">
+            <mat-label>{{ 'In Multiples Of' | translate }}</mat-label>
+            <input matInput type="number" formControlName="inMultiplesOf" />
+          </mat-form-field>
+        </div>
+
+        <div class="form-actions m-t-20">
+          <button mat-stroked-button matStepperPrevious>{{ 'labels.buttons.Back' | translate }}</button>
+          <button
+            mat-raised-button
+            color="primary"
+            matStepperNext
+            [disabled]="!currentAccountProductCurrencyForm.valid"
+          >
+            {{ 'labels.buttons.Next' | translate }}
+          </button>
+        </div>
+      </form>
+    </mat-step>
+
+    <!-- Financials Step -->
+    <mat-step [stepControl]="currentAccountProductFinancialsForm" [optional]="true">
+      <form [formGroup]="currentAccountProductFinancialsForm">
+        <ng-template matStepLabel>{{ 'Financials' | translate }}</ng-template>
+
+        <div class="layout-row gap-20px responsive-column">
+          <mat-form-field class="flex-33">
+            <mat-label>{{ 'Minimum Opening Balance' | translate }}</mat-label>
+            <input matInput type="number" formControlName="minimumOpeningBalance" />
+          </mat-form-field>
+
+          <mat-form-field class="flex-33">
+            <mat-label>{{ 'Maintenance Fee Amount' | translate }}</mat-label>
+            <input matInput type="number" formControlName="maintenanceFeeAmount" />
+          </mat-form-field>
+
+          <mat-form-field class="flex-33">
+            <mat-label>{{ 'Maintenance Fee Frequency' | translate }}</mat-label>
+            <input matInput type="number" formControlName="maintenanceFeeFrequency" />
+          </mat-form-field>
+        </div>
+
+        <div class="layout-row gap-20px responsive-column">
+          <mat-form-field class="flex-33">
+            <mat-label>{{ 'Overdraft Limit' | translate }}</mat-label>
+            <input matInput type="number" formControlName="overdraftLimit" />
+          </mat-form-field>
+
+          <mat-form-field class="flex-33">
+            <mat-label>{{ 'Transaction Limit Per Day' | translate }}</mat-label>
+            <input matInput type="number" formControlName="transactionLimitPerDay" />
+          </mat-form-field>
+
+          <mat-form-field class="flex-33">
+            <mat-label>{{ 'Minimum Balance For Interest Calculation' | translate }}</mat-label>
+            <input matInput type="number" formControlName="minimumBalanceForInterestCalculation" />
+          </mat-form-field>
+        </div>
+
+        <div class="form-actions m-t-20">
+          <button mat-stroked-button matStepperPrevious>{{ 'labels.buttons.Back' | translate }}</button>
+          <button mat-raised-button color="primary" matStepperNext>{{ 'labels.buttons.Next' | translate }}</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <!-- Interest Step -->
+    <mat-step [stepControl]="currentAccountProductInterestForm" [optional]="true">
+      <form [formGroup]="currentAccountProductInterestForm">
+        <ng-template matStepLabel>{{ 'Interest' | translate }}</ng-template>
+
+        <div class="layout-row gap-20px responsive-column">
+          <mat-form-field class="flex-33">
+            <mat-label>{{ 'Interest Rate' | translate }}</mat-label>
+            <input matInput type="number" formControlName="interestRate" />
+          </mat-form-field>
+
+          <mat-form-field class="flex-33">
+            <mat-label>{{ 'Interest Calculation Type' | translate }}</mat-label>
+            <input matInput type="number" formControlName="interestCalculationType" />
+          </mat-form-field>
+
+          <mat-form-field class="flex-33">
+            <mat-label>{{ 'Interest Posting Period Type' | translate }}</mat-label>
+            <input matInput type="number" formControlName="interestPostingPeriodType" />
+          </mat-form-field>
+        </div>
+
+        <div class="form-actions m-t-20">
+          <button mat-stroked-button matStepperPrevious>{{ 'labels.buttons.Back' | translate }}</button>
+          <button mat-raised-button color="primary" matStepperNext>{{ 'labels.buttons.Next' | translate }}</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <!-- Preview & Submit Step -->
+    <mat-step>
+      <ng-template matStepLabel>{{ 'Preview' | translate }}</ng-template>
+
+      <div class="m-b-20">
+        <p class="mat-body-1">{{ 'Review your entries and click Create Product' | translate }}</p>
+      </div>
+
+      <div class="container m-b-20">
+        <h4 class="mat-h4 m-b-10">{{ 'Details' | translate }}</h4>
+        <div class="layout-row gap-20px responsive-column">
+          <div class="flex-48">
+            <strong>{{ 'labels.inputs.Name' | translate }}:</strong>
+            {{ currentAccountProductDetailsForm.value.name || ('N/A' | translate) }}
+          </div>
+          <div class="flex-48">
+            <strong>{{ 'labels.inputs.Short Name' | translate }}:</strong>
+            {{ currentAccountProductDetailsForm.value.shortName || ('N/A' | translate) }}
+          </div>
+        </div>
+        <div class="layout-row gap-20px responsive-column m-t-10">
+          <div class="flex-98">
+            <strong>{{ 'labels.inputs.Description' | translate }}:</strong>
+            {{ currentAccountProductDetailsForm.value.description || ('N/A' | translate) }}
+          </div>
+        </div>
+      </div>
+
+      <div class="container m-b-20">
+        <h4 class="mat-h4 m-b-10">{{ 'Currency' | translate }}</h4>
+        <div class="layout-row gap-20px responsive-column">
+          <div class="flex-33">
+            <strong>{{ 'Currency Code' | translate }}:</strong>
+            {{ currentAccountProductCurrencyForm.value.currencyCode || ('N/A' | translate) }}
+          </div>
+          <div class="flex-33">
+            <strong>{{ 'Digits After Decimal' | translate }}:</strong>
+            {{ currentAccountProductCurrencyForm.value.currencyDigits ?? ('N/A' | translate) }}
+          </div>
+          <div class="flex-33">
+            <strong>{{ 'In Multiples Of' | translate }}:</strong>
+            {{ currentAccountProductCurrencyForm.value.inMultiplesOf ?? ('N/A' | translate) }}
+          </div>
+        </div>
+      </div>
+
+      <div class="container m-b-20">
+        <h4 class="mat-h4 m-b-10">{{ 'Financials' | translate }}</h4>
+        <div class="layout-row gap-20px responsive-column">
+          <div class="flex-33">
+            <strong>{{ 'Minimum Opening Balance' | translate }}:</strong>
+            {{ currentAccountProductFinancialsForm.value.minimumOpeningBalance ?? ('N/A' | translate) }}
+          </div>
+          <div class="flex-33">
+            <strong>{{ 'Maintenance Fee Amount' | translate }}:</strong>
+            {{ currentAccountProductFinancialsForm.value.maintenanceFeeAmount ?? ('N/A' | translate) }}
+          </div>
+          <div class="flex-33">
+            <strong>{{ 'Maintenance Fee Frequency' | translate }}:</strong>
+            {{ currentAccountProductFinancialsForm.value.maintenanceFeeFrequency ?? ('N/A' | translate) }}
+          </div>
+        </div>
+        <div class="layout-row gap-20px responsive-column m-t-10">
+          <div class="flex-33">
+            <strong>{{ 'Overdraft Limit' | translate }}:</strong>
+            {{ currentAccountProductFinancialsForm.value.overdraftLimit ?? ('N/A' | translate) }}
+          </div>
+          <div class="flex-33">
+            <strong>{{ 'Transaction Limit Per Day' | translate }}:</strong>
+            {{ currentAccountProductFinancialsForm.value.transactionLimitPerDay ?? ('N/A' | translate) }}
+          </div>
+          <div class="flex-33">
+            <strong>{{ 'Minimum Balance For Interest Calculation' | translate }}:</strong>
+            {{ currentAccountProductFinancialsForm.value.minimumBalanceForInterestCalculation ?? ('N/A' | translate) }}
+          </div>
+        </div>
+      </div>
+
+      <div class="container m-b-20">
+        <h4 class="mat-h4 m-b-10">{{ 'Interest' | translate }}</h4>
+        <div class="layout-row gap-20px responsive-column">
+          <div class="flex-33">
+            <strong>{{ 'Interest Rate' | translate }}:</strong>
+            {{ currentAccountProductInterestForm.value.interestRate ?? ('N/A' | translate) }}
+          </div>
+          <div class="flex-33">
+            <strong>{{ 'Interest Calculation Type' | translate }}:</strong>
+            {{ currentAccountProductInterestForm.value.interestCalculationType ?? ('N/A' | translate) }}
+          </div>
+          <div class="flex-33">
+            <strong>{{ 'Interest Posting Period Type' | translate }}:</strong>
+            {{ currentAccountProductInterestForm.value.interestPostingPeriodType ?? ('N/A' | translate) }}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-actions m-t-20">
+        <button mat-stroked-button matStepperPrevious>{{ 'labels.buttons.Back' | translate }}</button>
+        <button mat-raised-button color="primary" (click)="submit()">{{ 'labels.buttons.Create' | translate }}</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
 </div>

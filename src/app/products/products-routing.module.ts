@@ -979,7 +979,8 @@ const routes: Routes = [
     CollateralsResolver,
     CollateralTemplateResolver,
     DelinquencyRangeComponentsResolver,
-    DelinquencyBucketComponentsResolver
+    DelinquencyBucketComponentsResolver,
+    CurrentAccountProductsResolver
   ]
 })
 export class ProductsRoutingModule {}

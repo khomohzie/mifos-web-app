@@ -1,26 +1,12 @@
-/** Angular Imports */
 import { Injectable } from '@angular/core';
-
-/** rxjs Imports */
+import { Resolve } from '@angular/router';
 import { Observable } from 'rxjs';
-
-/** Custom Services */
 import { ProductsService } from '../products.service';
 
-/**
- * Current account products data resolver.
- */
-@Injectable({ providedIn: 'root' })
-export class CurrentAccountProductsResolver {
-  /**
-   * @param {ProductsService} productsService Products service.
-   */
+@Injectable()
+export class CurrentAccountProductsResolver implements Resolve<Object> {
   constructor(private productsService: ProductsService) {}
 
-  /**
-   * Returns the current account products data.
-   * @returns {Observable<any>}
-   */
   resolve(): Observable<any> {
     return this.productsService.getCurrentAccountProducts();
   }
