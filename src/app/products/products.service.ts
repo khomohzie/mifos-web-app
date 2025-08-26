@@ -592,4 +592,27 @@ export class ProductsService {
     const httpParams = new HttpParams().set('genericResultSet', 'true');
     return this.http.delete(`/datatables/${datatableName}/${productId}`, { params: httpParams });
   }
+
+  /**
+   * @returns {Observable<any>} Current account products data
+   */
+  getCurrentAccountProducts(): Observable<any> {
+    return this.http.get('/currentaccountproducts');
+  }
+
+  /**
+   * @param {string} currentAccountProductId current account product ID.
+   * @returns {Observable<any>} Current account product details.
+   */
+  getCurrentAccountProduct(currentAccountProductId: string): Observable<any> {
+    return this.http.get(`/currentaccountproducts/${currentAccountProductId}`);
+  }
+
+  /**
+   * @param {any} currentAccountProduct Current account product payload.
+   * @returns {Observable<any>} Creation response.
+   */
+  createCurrentAccountProduct(currentAccountProduct: any): Observable<any> {
+    return this.http.post('/currentaccountproducts', currentAccountProduct);
+  }
 }

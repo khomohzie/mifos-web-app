@@ -52,8 +52,12 @@ export class ProductsComponent implements AfterViewInit {
   @ViewChild('recurringDepositProducts') recurringDepositProducts: ElementRef<any>;
   /* Template for popover on recurring deposit products */
   @ViewChild('templateRecurringDepositProducts') templateRecurringDepositProducts: TemplateRef<any>;
-  // Initialize an array of 11 boolean values, all set to false
-  arrowBooleans: boolean[] = new Array(11).fill(false);
+  /* Reference of current account products */
+  @ViewChild('currentAccountProducts') currentAccountProducts: ElementRef<any>;
+  /* Template for popover on current account products */
+  @ViewChild('templateCurrentAccountProducts') templateCurrentAccountProducts: TemplateRef<any>;
+  // Initialize an array of 12 boolean values, all set to false
+  arrowBooleans: boolean[] = new Array(12).fill(false);
 
   /**
    * @param {Router} router Router.
@@ -100,6 +104,16 @@ export class ProductsComponent implements AfterViewInit {
         this.showPopover(
           this.templateRecurringDepositProducts,
           this.recurringDepositProducts.nativeElement,
+          'bottom',
+          true
+        );
+      });
+    }
+    if (this.configurationWizardService.showCurrentAccountProducts === true) {
+      setTimeout(() => {
+        this.showPopover(
+          this.templateCurrentAccountProducts,
+          this.currentAccountProducts.nativeElement,
           'bottom',
           true
         );

@@ -1,0 +1,22 @@
+<div class="container">
+  <form [formGroup]="currentAccountProductForm" (ngSubmit)="submit()">
+    <div class="layout-row gap-20px responsive-column">
+      <mat-form-field class="flex-33">
+        <mat-label>{{ 'labels.inputs.Name' | translate }}</mat-label>
+        <input matInput formControlName="name" />
+      </mat-form-field>
+      <mat-form-field class="flex-33">
+        <mat-label>{{ 'labels.inputs.Short Name' | translate }}</mat-label>
+        <input matInput formControlName="shortName" />
+      </mat-form-field>
+    </div>
+    <div class="layout-row align-end gap-2px responsive-column m-t-20">
+      <button mat-raised-button color="primary" type="submit" [disabled]="currentAccountProductForm.invalid">
+        {{ 'labels.buttons.Create' | translate }}
+      </button>
+      <button mat-raised-button color="warn" [routerLink]="['../']">
+        {{ 'labels.buttons.Cancel' | translate }}
+      </button>
+    </div>
+  </form>
+</div>

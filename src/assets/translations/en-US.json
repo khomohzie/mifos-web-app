@@ -1168,7 +1168,13 @@
       "Grace On Principal": "Grace On Principal",
       "Insert Installment": "Insert Installment",
       "Interest Rate": "Interest Rate",
-      "Principal Amount": "Principal Amount"
+      "Principal Amount": "Principal Amount",
+      "Current Account Products": "Current Account Products",
+      "Create Current Account Product": "Create Current Account Product",
+      "List of current account products in the organization": "List of current account products in the organization",
+      "Search bar to filter current account products.": "Search bar to filter current account products.",
+      "Add, modify or inactivate a Current Account product": "Add, modify or inactivate a Current Account product",
+      "This option allows you to create a new current account product.": "This option allows you to create a new current account product"
     },
     "inputs": {
       "accounting": {
@@ -1606,7 +1612,7 @@
       "External Asset Owner": "External Asset Owner",
       "External ID": "External ID",
       "External Id": "External Id",
-      "External id": "External id",
+      "external id": "External id",
       "event with entity name of": "event with entity name of",
       "FAMILY MEMBERS": "FAMILY MEMBERS",
       "FCM End Point": "FCM End Point",

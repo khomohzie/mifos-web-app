@@ -122,6 +122,9 @@ import { ViewAdvancePaymenyAllocationComponent } from './loan-products/view-loan
 import { AdvancePaymentAllocationTabComponent } from './loan-products/loan-product-stepper/loan-product-payment-strategy-step/advance-payment-allocation-tab/advance-payment-allocation-tab.component';
 import { LoanProductSummaryComponent } from './loan-products/common/loan-product-summary/loan-product-summary.component';
 import { LoanProductDeferredIncomeRecognitionStepComponent } from './loan-products/loan-product-stepper/loan-product-capitalized-income-step/loan-product-deferred-income-recognition-step.component';
+import { CurrentAccountProductsComponent } from './current-account-products/current-account-products.component';
+import { CreateCurrentAccountProductComponent } from './current-account-products/create-current-account-product/create-current-account-product.component';
+import { ViewCurrentAccountProductComponent } from './current-account-products/view-current-account-product/view-current-account-product.component';
 
 /**
  * Products Module
@@ -249,7 +252,10 @@ import { LoanProductDeferredIncomeRecognitionStepComponent } from './loan-produc
     ViewAdvancePaymenyAllocationComponent,
     AdvancePaymentAllocationTabComponent,
     LoanProductSummaryComponent,
-    LoanProductDeferredIncomeRecognitionStepComponent
+    LoanProductDeferredIncomeRecognitionStepComponent,
+    CurrentAccountProductsComponent,
+    CreateCurrentAccountProductComponent,
+    ViewCurrentAccountProductComponent
   ]
 })
 export class ProductsModule {}

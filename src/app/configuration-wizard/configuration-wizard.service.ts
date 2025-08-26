@@ -184,6 +184,12 @@ export class ConfigurationWizardService {
   showRecurringDepositProductsPage = false;
   /*To show popover on recurring deposit products table*/
   showRecurringDepositProductsList = false;
+  /*To show popover on current account products on products page*/
+  showCurrentAccountProducts = false;
+  /*To show popover on button in current account products page*/
+  showCurrentAccountProductsPage = false;
+  /*To show popover on current account products table*/
+  showCurrentAccountProductsList = false;
 
   /**
    * Manage Funds and manage reports Setup
@@ -280,6 +286,9 @@ export class ConfigurationWizardService {
     this.showRecurringDepositProducts = false;
     this.showRecurringDepositProductsPage = false;
     this.showRecurringDepositProductsList = false;
+    this.showCurrentAccountProducts = false;
+    this.showCurrentAccountProductsPage = false;
+    this.showCurrentAccountProductsList = false;
 
     this.showManageFunds = false;
     this.showManageReports = false;

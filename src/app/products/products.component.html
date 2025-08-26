@@ -134,6 +134,46 @@
             </mat-list-item>
           </div>
 
+          <div #currentAccountProducts>
+            <mat-list-item
+              [routerLink]="['current-account-products']"
+              *mifosxHasPermission="'READ_CURRENTACCOUNTPRODUCT'"
+            >
+              <div class="menu-list-item-content">
+                <div class="menu-left-section" [routerLink]="['current-account-products']">
+                  <mat-icon matListIcon>
+                    <fa-icon icon="briefcase" size="sm"></fa-icon>
+                  </mat-icon>
+                  <div matLine>
+                    {{ 'labels.heading.Current Account Products' | translate }}
+                    <p
+                      matLine
+                      *ngIf="arrowBooleans[11]"
+                      [routerLink]="['current-account-products']"
+                      class="menu-explanation"
+                    >
+                      {{ 'labels.text.Add, modify or inactivate a Current Account product' | translate }}
+                    </p>
+                  </div>
+                </div>
+                <div class="menu-right-section">
+                  <fa-icon
+                    (click)="arrowBooleansToggle(11); $event.stopPropagation()"
+                    *ngIf="!arrowBooleans[11]"
+                    icon="arrow-down"
+                    size="md"
+                  ></fa-icon>
+                  <fa-icon
+                    (click)="arrowBooleansToggle(11); $event.stopPropagation()"
+                    *ngIf="arrowBooleans[11]"
+                    icon="arrow-up"
+                    size="md"
+                  ></fa-icon>
+                </div>
+              </div>
+            </mat-list-item>
+          </div>
+
           <mat-list-item [routerLink]="['collaterals']">
             <div class="menu-list-item-content">
               <div class="menu-left-section" [routerLink]="['collaterals']">

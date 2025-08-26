@@ -51,6 +51,9 @@ import { CollateralsComponent } from './collaterals/collaterals.component';
 import { CreateCollateralComponent } from './collaterals/create-collateral/create-collateral.component';
 import { EditCollateralComponent } from './collaterals/edit-collateral/edit-collateral.component';
 import { ViewCollateralComponent } from './collaterals/view-collateral/view-collateral.component';
+import { CurrentAccountProductsComponent } from './current-account-products/current-account-products.component';
+import { CreateCurrentAccountProductComponent } from './current-account-products/create-current-account-product/create-current-account-product.component';
+import { ViewCurrentAccountProductComponent } from './current-account-products/view-current-account-product/view-current-account-product.component';
 
 /** Custom Resolvers */
 import { LoanProductsResolver } from './loan-products/loan-products.resolver';
@@ -126,6 +129,8 @@ import { ShareProductDatatableTabComponent } from './share-products/view-share-p
 import { ShareProductDatatablesResolver } from './share-products/share-product-datatables.resolver';
 import { ShareProductDatatableResolver } from './share-products/share-product-datatable.resolver';
 import { GlobalConfigurationsResolver } from 'app/system/configurations/global-configurations-tab/global-configurations.resolver';
+import { CurrentAccountProductsResolver } from './current-account-products/current-account-products.resolver';
+import { CurrentAccountProductResolver } from './current-account-products/current-account-product.resolver';
 
 /** Products Routes */
 const routes: Routes = [
@@ -882,6 +887,36 @@ const routes: Routes = [
                   }
                 }
               ]
+            }
+          ]
+        },
+        {
+          path: 'current-account-products',
+          data: { title: 'Current Account Products', breadcrumb: 'Current Account Products' },
+          children: [
+            {
+              path: '',
+              component: CurrentAccountProductsComponent,
+              resolve: {
+                currentAccountProducts: CurrentAccountProductsResolver
+              }
+            },
+            {
+              path: 'create',
+              component: CreateCurrentAccountProductComponent,
+              data: { title: 'Create Current Account Product', breadcrumb: 'Create' }
+            },
+            {
+              path: ':productId',
+              component: ViewCurrentAccountProductComponent,
+              data: {
+                title: 'View Current Account Product',
+                breadcrumb: 'productId',
+                routeParamBreadcrumb: 'productId'
+              },
+              resolve: {
+                currentAccountProduct: CurrentAccountProductResolver
+              }
             }
           ]
         }
